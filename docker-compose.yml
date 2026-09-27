@@ -1,5 +1,7 @@
 version: '3'
+
 services:
+
   mongo:
     image: mongo:4.4.4
     container_name: mongo
@@ -11,3 +13,12 @@ services:
       - 27018:27017
     volumes:
       - ./mongo-data-4.4:/data/db
+
+  top-api:
+    image: top-api:latest
+    container_name: top-api
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - ./.env:/opt/app/.env
